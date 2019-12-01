@@ -1,1 +1,24 @@
-<p>signin works!</p>
+<h1 *ngIf="authenticationService.userLoggedIn">Hello {{authenticationService.userData.displayName}}</h1>
+
+<!-- Important!!!! -->
+<!-- This div checks if a user is already logged in.
+     If someone is logged in already, it will display
+     their username along with a button to logout.
+     If there is no user logged in, input fields will appear
+     along with buttons to log in and sign in.
+     Feel free to modify the look of the page, just keep
+     note of how user logged in is being checked.
+
+     The username text field is ONLY for sign up.
+-->
+<div *ngIf="!(authenticationService.userLoggedIn )">
+    <input type="texxt" [(ngModel)]="username" placeholder="username">
+    <input type="text" [(ngModel)]="email" placeholder="email">
+    <input type="password" [(ngModel)]="password" placeholder="password">
+
+    <button (click)="signUp()">Sign Up</button>
+
+    <button (click)="signIn()">Login</button>
+</div>
+
+<button (click)="signOut()" *ngIf="authenticationService.userLoggedIn">Logout</button>
