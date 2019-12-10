@@ -4,8 +4,15 @@
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: lightcoral; 
-    color: white;
+    // background-color: #1e5e98; 
+    // background: linear-gradient(#0f0c29, #1e5e98);
+    //color: white;
+    //color: #BF9836;
+    // background: #6ADDC8;
+    background: #0f0c29;
+    // background: linear-gradient(90deg, rgba(107,222,201,1) 0%, rgba(55,232,232,1) 0%, rgba(14,126,120,1) 100%);
+    color: #f4f4f4;
+    font-weight: bolder;
 }
 
 div{
@@ -40,4 +47,34 @@ div{
 
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+button {
+    background-color: #1e5e98;
+    border-radius: 50px;
+    width: 200px;
+    -webkit-box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.97);
+    -moz-box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.97);
+    box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.97);
+}
+
+a {
+    display: inline;
+    color: #4D5A6D;
+    text-decoration: none;
+    padding-left: 30px;
+    font-weight: lighter;
+    &:hover {
+        color: #0f0c29;
+        text-decoration: underline;
+    }
+}
+
+h3{
+    font-size: 50px;
+    line-height: 50px;
+    padding-top: 15px;
+    padding-bottom: 50px;
+    text-align: left;
+    font-weight: lighter;
 }
