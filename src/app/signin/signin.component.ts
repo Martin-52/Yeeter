@@ -9,14 +9,8 @@ import { AuthenticationService } from '../login/authentication.service';
 export class SigninComponent implements OnInit {
   email: string;
   password: string;
-
   constructor(public authenticationService: AuthenticationService) {}
 
-  signUp() {
-    this.authenticationService.SignUp(this.email, this.password);
-    this.email = ''; 
-    this.password = '';
-  }
 
   signIn() {
     this.authenticationService.SignIn(this.email, this.password);

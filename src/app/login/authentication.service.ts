@@ -33,7 +33,7 @@ export class AuthenticationService {
   }
 
   /* Sign up */
-  SignUp(email: string, password: string, username: string, ) {
+  SignUp(email: string, password: string, username: string) {
       
     if (this.UsernameExists(username)) {
       // Throw a username exists error.
