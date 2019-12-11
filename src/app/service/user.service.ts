@@ -37,9 +37,9 @@ export class UserService {
   }
 
   isFollowingUser(username: string, userId: string) {
-    return this.http.post<boolean>(this.apiUrl + "/user/isFollowingUser", {
+    return this.http.get<boolean>(this.apiUrl + "/user/isFollowingUser", { params: {
       username: username,
       uid: userId
-    });
+    }});
   }
 }

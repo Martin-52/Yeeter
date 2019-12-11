@@ -50,21 +50,23 @@
 </nav>
 
   
-  <div class="wrapper">
-    <main>
-            <div *ngFor="let item of [].constructor(10); let i = index">
-                    <div class="card" style="width: 40rem;">
-                        <div class="card-body">
-                            <!-- <h5 class="card-title">@Username{{i}}</h5> -->
-                            <h6 class="card-subtitle mb-2 text-muted">@Username {{i}}</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <section style="float:right;">
-                                <a href="#" class="card-link">Like: 0</a>
-                                <a href="#" class="card-link">Dislike: 0</a>
-                            </section>
-                        </div>
-                    </div>
-            </div>
-    </main>
-  </div>
-
+<div class="wrapper">
+  <main>
+    <div *ngFor="let item of yeets;">
+      <div class="card" style="width: 40rem;" id={{item.key}}>
+        <div class="card-body">
+          <!-- <h5 class="card-title">@Username{{i}}</h5> -->
+          <h6 class="card-subtitle mb-2 text-muted">@{{item.username}}</h6>
+          <p class="card-text">{{item.yeet}}</p>
+          <section style="float:right;">
+            <a href="#" class="card-link">Like: {{item.likes}}</a>
+            <a href="#" class="card-link">Dislike: {{item.dislikes}}</a>
+          </section>
+        </div>
+      </div>
+    </div>     
+    <div *ngIf="!(yeets)" id="background2">
+        Yeets are empty....
+    </div>
+  </main>
+</div>

@@ -5,4 +5,6 @@ export class Yeet {
     userId: string;
     likes: number;
     dislikes: number;
+    userLiked: boolean;
+    userDisliked: boolean;
 }

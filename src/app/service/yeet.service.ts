@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Yeet } from '../model/yeet';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,14 +48,14 @@ export class YeetService {
   }
 
   personalPosts(uid: string) {
-    return this.http.post<Yeet[]>(this.apiUrl + "/yeet/personalPosts", {
+    return this.http.get<Yeet[]>(this.apiUrl + "/yeet/personalPosts",{params: {
       uid: uid
-    });
+    }});
   }
 
-  followingPosts(post: string, uid: string, username: string) {
-    return this.http.post<Yeet[]>(this.apiUrl + "/yeet/followingPosts", {
+  followingPosts(uid: string) {
+    return this.http.get<Yeet[]>(this.apiUrl + "/yeet/followingPosts",{params: {
       uid: uid
-    });
+    }});
   }
 }
