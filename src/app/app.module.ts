@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { UserService } from './service/user.service';
+import { YeetService } from './service/yeet.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -28,9 +33,10 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, UserService, YeetService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
