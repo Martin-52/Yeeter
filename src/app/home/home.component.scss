@@ -35,9 +35,15 @@ ul {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
+h5 {
+  text-decoration: none;
+  color: rgba(117,117,117 ,1);
+}
+
 .twitter {
+  font: small-caps;
   justify-content: space-evenly;
-  height: 50px;
+  height: 75px;
   align-items: center;
   // padding: 0 10px;
   border: 1px solid rgba(238,238,238 ,1);
@@ -45,18 +51,40 @@ ul {
   color: rgba(117,117,117 ,1);
   box-shadow: 5px 10px 20px -20px rgba(85,172,238 ,1);
 }
-.twitter li {
+.twitter a li {
   cursor: pointer;
 }
-.twitter li:hover{
-  padding-left: 5px;
+.twitter h5:hover{
+  // padding-left: 5px;
   text-align: center;
-  line-height: -10px;
-  width: 60px;
-  height: 40px;
-  color: white;
-  background-color: coral;
+  width: 70px;
+  height: 30px;
+  color: coral;
+  // background-color: coral;
   border-radius: 20px;
+  transition-duration: 0.6s;
+}
+
+.twitter button {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: white;
+  border: none;
+}
+
+.twitter button li {
+  cursor: pointer;
+}
+.twitter button:hover{
+  // padding-left: 5px;
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  color: coral;
+  // background-color: coral;
+  border-radius: 50px;
   transition-duration: 0.6s;
 }
 // .twitter__bird {
@@ -88,7 +116,8 @@ ul {
   line-height: 200px;
   text-align: center;
   // background: rgb(36, 137, 155)
-  background-color: #15202B;
+  background-color: rgb(47, 59, 70);
+  opacity: .9;
 }
 
 .panel-heading {
@@ -101,30 +130,35 @@ ul {
 .alert {
   width: 15rem;
   text-align: center;
-  background-color: #253341;
+  // background-color: #253341;
+  background-color: white;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border: none;
 }
 
-.panel {
+.panel1 {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  // background-color: white;
+  // height: 200px;
+  // box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   // margin-left: .9rem;
 }
 
 .container {
   // background-color: lightskyblue;
   // background-color: #444;
-  background-color: #15202B;
-  box-shadow: 0px 7px 14px 10px rgba(0,0,0,0.61);
+  background-color: whitesmoke;
+  // box-shadow: 0px 7px 14px 5px rgba(0,0,0,0.1);
 }
 
   
   .card {
-    background-color: coral;
-    color: #fff;
+    // background-color: coral;
+    // background-color: aliceblue;
+    background-color: white;
+    color: darkgrey;
     border-radius: 5px;
     padding: 20px;
     font-size: 100%;
@@ -132,10 +166,8 @@ ul {
 
 
 .card-body {
-    -webkit-box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.61);
-    -moz-box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.61);
-    box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.61);
-    
+    // box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.61);
+    box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.2);
 }
 
 .card-link {
@@ -144,8 +176,8 @@ ul {
 
 body{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  // background-color: white;
-  background-color: #15202B;
+  background-color: whitesmoke;
+  // background-color: rgb(206, 207, 207);
   // background-color: #1e5e98; 
   // background-color: #F0FFFF;
   // background-color: #337AB7;
@@ -154,19 +186,19 @@ body{
 
 
 div.header{
-  color: white;
+  color: black;
   font-size: large;
   top: 0;
   position: sticky;
   border-radius: none;
-  // background-color: white;
-  background-color: #15202B;
+  background-color: white;
+  // background-color: #15202B;
   padding: 25px;
   width: 35rem;
   // border: white;
   border-width: 10px 1px;;
   font: small-caps;
-  box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.61);
+  box-shadow: 3px 7px 14px -4px rgba(0,0,0,0.2);
 }
 
 .yeeting {
@@ -176,7 +208,7 @@ div.header{
   padding-bottom: 3.3rem;
   padding-top: 5px;
   border-radius: none;
-  background-color: coral;
+  background-color: white;
   input {
     padding: 2.2rem;
     border: none;
@@ -193,7 +225,7 @@ div.header{
 
 small {
   padding: 10px;
-  color: white;
+  color: #1b5c88;
 }
 
 .yeeting {
@@ -213,10 +245,10 @@ small {
 
 .yeeting .btn-yeet  {
   
-  width: 120px;
-  height: 45px;
+  width: 100px;
+  height: 35px;
   font-family: 'Roboto', sans-serif;
-  font-size: 11px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
@@ -228,6 +260,7 @@ small {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
+
   }
 
   .yeeting .btn-yeet:hover {

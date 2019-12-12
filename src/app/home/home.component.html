@@ -8,13 +8,18 @@
   </main>
 </div> -->
 <ul class="twitter" role="navigation">
-        <li><i class="fa "></i>Home</li>
+        <!-- <li><i href="#" class="fa " routerLink="/signUp"></i><h5>Home</h5></li> -->
+
+        <a href="#" class="fa" routerLink="/signup"> <h5>Home</h5></a>
         <!-- <li><i class="fa "></i>Profile</li> -->
-        <h2>YEETER</h2>
+        <h1>YEETER</h1>
         <!-- <li><i class="fa fa-envelope-o"></i>Messages</li> -->
         <!-- <li><form><input placeholder="search yeeter"/><i class="fa fa-search sr-only"></i></form></li> -->
         
-        <li><i class="fa "></i>Log out</li>
+        <!-- <li><i class="fa "></i><h5>Log out</h5></li> -->
+
+        <!-- <a href="#" class="fa" routerLink="/signup"> <h5>Log out</h5></a> -->
+        <button type="submit" (click)="signOut()"><h5>Log out</h5></button>
         
       </ul>
 
@@ -29,7 +34,7 @@
                 <div class="col-sm-3">
                     
                     <!-- User left hand information -->
-                    <div class="panel">
+                    <div class="panel1">
                         <div class="panel-body">
                             <!-- <a href="#"><img class="img-responsive" alt="" src="http://placehold.it/800x500"></a> -->
                     
@@ -47,7 +52,7 @@
                                 <ul>
 
                                     <span class="profile">
-                                        <a href="#">
+                                        <a href="#" routerLink="/profile">
                                             
                                             <!-- <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"> -->
                                             <h5>Profile</h5>

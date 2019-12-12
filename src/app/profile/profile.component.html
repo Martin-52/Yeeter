@@ -1,1 +1,192 @@
-<p>profile works!</p>
+<!-- <h1 *ngIf="authenticationService.userLoggedIn">Hello {{authenticationService.userData.displayName}}</h1> 
+
+<button type="submit" class="btn btn-primary" (click)="signOut()">Sign out</button>
+  
+<div class="wrapper">
+  <main>
+  
+  </main>
+</div> -->
+<ul class="twitter" role="navigation">
+        <!-- <li><i href="#" class="fa " routerLink="/signUp"></i><h5>Home</h5></li> -->
+
+        <a href="#" class="fa" routerLink="/signup"> <h5>Home</h5></a>
+        <!-- <li><i class="fa "></i>Profile</li> -->
+        <h1>YEETER</h1>
+        <!-- <li><i class="fa fa-envelope-o"></i>Messages</li> -->
+        <!-- <li><form><input placeholder="search yeeter"/><i class="fa fa-search sr-only"></i></form></li> -->
+        
+        <!-- <li><i class="fa "></i><h5>Log out</h5></li> -->
+
+        <!-- <a href="#" class="fa" routerLink="/signup"> <h5>Log out</h5></a> -->
+        <button type="submit" (click)="signOut()"><h5>Log out</h5></button>
+        
+      </ul>
+
+<body>
+    <div class="top-nav">
+            
+        </div>
+        
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-sm-3">
+                    
+                    <!-- User left hand information -->
+                    <div class="panel1">
+                        <div class="panel-body">
+                            <!-- <a href="#"><img class="img-responsive" alt="" src="http://placehold.it/800x500"></a> -->
+                    
+
+                            <div >
+                                <ul>
+                                    <span class="home">
+                                    <a href="#" routerLink="/home">
+                                        <!-- <img src="https://img.icons8.com/ios-filled/50/000000/dog-house.png"> -->
+                                        <h5>Home</h5>
+                                        
+                                    </a>
+                                    </span>
+                                </ul>
+                                <ul>
+
+                                    <span class="profile" routerLink="/profile">
+                                        <a href="#" >
+                                            
+                                            <!-- <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"> -->
+                                            <h5>Profile</h5>
+                                            
+                                        </a>
+                                    </span>
+                                </ul>
+
+                                <ul>
+                                    <!-- <span >
+                                            <a href="#"> -->
+                                                
+                                                <!-- <img src="https://img.icons8.com/ios-filled/50/000000/user-male-circle.png"> -->
+                                                <!-- <h5>Log out</h5> -->
+                                                
+                                            <!-- </a>
+                                        </span> -->
+                                        <span class="logout">
+                                            
+                                            <button type="submit" (click)="signOut()">Log out</button>
+                                        </span>
+                                        
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End of User left hand information -->
+                
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-info">
+                        <div class="header border-bottom">
+                            <h3>Home</h3>
+                        </div>
+                        
+                        <div class="yeeting">
+                            <input type="text" class="form-control" placeholder="What's happening?">
+                            <span class="yeet-span">
+                                <button class="btn-yeet">YEET</button>
+                            </span>
+                            
+                        </div>
+                        
+
+
+                        <!--  Middle panel Feed -->
+                        <div class="panel-body">
+                            <section>
+                                <div *ngFor="let item of yeets;">
+                                    <div class="card" style="width: 35rem;" id={{item.key}}>
+                                      <div class="card-body">
+                                        <!-- <h5 class="card-title">@Username{{i}}</h5> -->
+                                        <h6 class="card-subtitle mb-2 text-muted">@{{item.username}}</h6>
+                                        <p class="card-text">{{item.yeet}}</p>
+                                        <section style="float:right;">
+                                          <a href="#" class="card-link">Like: {{item.likes}}</a>
+                                          <a href="#" class="card-link">Dislike: {{item.dislikes}}</a>
+                                        </section>
+                                      </div>
+                                    </div>
+                                  </div>     
+                                  <div *ngIf="!(yeets)" id="background2">
+                                      Yeets are empty....
+                                  </div>
+                                    
+                                </section>
+                        </div>
+                        <!--  End of Middle panel Feed -->
+
+                    </div>
+        
+                    <br>
+                    <br>
+                    <br>
+        
+        
+                 
+                </div>
+        
+                <div class="col-sm-3">
+                    <div class="panel">
+                        
+                            <div class="alert alert-primary" role="alert">
+                                    <h2 class="circle" *ngIf="authenticationService.userLoggedIn"> {{authenticationService.userData.displayName}}</h2>
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <h6>
+                                            <small>FOLLOWERS</small>
+                                            <br>
+                                            <a href="#">1,545</a>
+                                        </h6>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <h6>
+                                            <small>LIKES</small>
+                                            <br>
+                                            <a href="#">251</a>
+                                        </h6>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <h6>
+                                            <small>DISLIKES</small>
+                                            <br>
+                                            <a href="#">153</a>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel-heading">
+                                    <div class="media">
+                                        <!-- <a class="media-left" href="#fake">
+                                            <img alt="" class="media-object img-rounded" src="http://placehold.it/35x35">
+                                        </a> -->
+                                        <div class="media-body">
+                                            <div class="form-group has-feedback alert alert-primary">
+                                                <!-- <label class="control-label sr-only" for="inputSuccess5">Hidden label</label> -->
+                                                <input type="text" class="form-control" placeholder="Search">
+                                                <!-- <span class="glyphicon glyphicon-camera form-control-feedback" aria-hidden="true"></span> -->
+                                                <span id="search2" class="sr-only">(success)</span>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                    </div>
+             
+                </div>
+
+
+
+            </div>
+        </div>
+
+</body>
