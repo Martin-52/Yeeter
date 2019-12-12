@@ -18,16 +18,16 @@ export class YeetService {
     }}).subscribe((res)=>{});
   }
 
-  addLike(yeetKey: string, uid: string) {
-    let data = "yeetKey="+yeetKey+"&uid="+uid;
+  addLike(yeetKey: string, uid: string, postUserId: string) {
+    let data = "yeetKey="+yeetKey+"&uid="+uid+"&postUserId="+postUserId;
     this.http.post<any>(this.apiUrl + "/yeet/addLike", data, {headers:{
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
     }}).subscribe((res)=>{});
   }
 
-  removeLike(yeetKey: string, uid: string) {
-    let data = "yeetKey="+yeetKey+"&uid="+uid;
+  removeLike(yeetKey: string, uid: string, postUserId: string) {
+    let data = "yeetKey="+yeetKey+"&uid="+uid+"&postUserId="+postUserId;
     this.http.post<any>(this.apiUrl + "/yeet/removeLike",data, { headers:{
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
@@ -35,16 +35,16 @@ export class YeetService {
     .subscribe((res)=>{});
   }
 
-  addDislike(yeetKey: string, uid: string) {
-    let data = "yeetKey="+yeetKey+"&uid="+uid;
+  addDislike(yeetKey: string, uid: string, postUserId: string) {
+    let data = "yeetKey="+yeetKey+"&uid="+uid+"&postUserId="+postUserId;
     this.http.post<any>(this.apiUrl + "/yeet/addDislike", data, {  headers:{
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
     }}).subscribe((res)=>{});
   }
 
-  removeDislike(yeetKey: string, uid: string) {
-    let data = "yeetKey="+yeetKey+"&uid="+uid;
+  removeDislike(yeetKey: string, uid: string, postUserId: string) {
+    let data = "yeetKey="+yeetKey+"&uid="+uid+"&postUserId="+postUserId;
     this.http.post<any>(this.apiUrl + "/yeet/removeDislike", data ,{  headers:{
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
