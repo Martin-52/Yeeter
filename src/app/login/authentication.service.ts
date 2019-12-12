@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from "../login/user";
 import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthenticationService {
   userData: any;
   userName: string;
 
-  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
+  constructor(private angularFireAuth: AngularFireAuth, private router: Router,private userService: UserService) {
     this.angularFireAuth.authState.subscribe(user => {
       if (user) {
         this.userLoggedIn = true;
@@ -37,34 +38,19 @@ export class AuthenticationService {
   /* Sign up */
   SignUp(email: string, password: string, username: string ) {
       
-    if (this.UsernameExists(username)) {
-      // Throw a username exists error.
-      // Or something similar \(><)/
-    } else {
-      /*
-        This is where the magic happens.
-        Use something similar to iOS' ProfileChangeRequest.
-        The request makes it possible to add different user data.
-        But we will primarily use it for displayname/username.
-      */
-
-      // Create the user
-      this.angularFireAuth
-      .auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log('Successfully signed up!', res);
-
-      /*
-        To stay consistent, we'll use the back-end to make changes to the user profile.
-        Will be implemented soon...
-      */
-        this.UploadUsername(username, this.angularFireAuth.auth.currentUser.uid);
-      })
-      .catch(error => {
-        console.log('Something is wrong:', error.message);
-      });        
-    }
+    // Create the user
+    this.angularFireAuth
+    .auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(res => {
+      console.log('Successfully signed up!', res);
+      this.UploadUsername(username, this.angularFireAuth.auth.currentUser.uid).subscribe((res)=> {
+        this.SignIn(email, password);
+      });
+    })
+    .catch(error => {
+      console.log('Something is wrong:', error.message);
+    });  
   }
 
   /* Sign in */
@@ -73,6 +59,8 @@ export class AuthenticationService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
+        localStorage.setItem('uid', JSON.stringify(this.userData.uid));
+        localStorage.setItem('username', JSON.stringify(this.userData.displayName));
         this.userLoggedIn = true;
         this.router.navigate(['/home']);
         console.log('Successfully signed in!');
@@ -92,14 +80,10 @@ export class AuthenticationService {
   }
   
   UsernameExists(username: string) {
-    // Dummy method that makes a backend call to determine whether
-    // the user desired username is already taken. 
-    return false;
+    return this.userService.usernameExists(username).subscribe((res)=>{});
   }
 
   UploadUsername(username: string, uid: string) {
-    /// Dummy method to add the username into the database.
-    // Will implement once the API is up and running.
+      return this.userService.uploadUser(username, uid);
   }
-
 }

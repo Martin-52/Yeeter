@@ -4,7 +4,6 @@
   
 <div class="wrapper">
   <main>
-  
   </main>
 </div> -->
 <ul class="twitter" role="navigation">
@@ -109,8 +108,21 @@
                                         <h6 class="card-subtitle mb-2 text-muted">@{{item.username}}</h6>
                                         <p class="card-text">{{item.yeet}}</p>
                                         <section style="float:right;">
-                                          <a href="#" class="card-link">Like: {{item.likes}}</a>
-                                          <a href="#" class="card-link">Dislike: {{item.dislikes}}</a>
+                                        <a href="javascript: void(0)" (click)="
+                                          like(item);
+                                          item.userLiked ? item.likes = item.likes - 1 :  item.likes = item.likes + 1;
+                                          item.userLiked ? item.userLiked = false :  item.userLiked = true;
+                                          "
+                                          class="card-link" id={{item.likes}}>Like: {{item.likes}}
+                                        </a>
+                                          
+                                        <a href="javascript: void(0)" (click)="
+                                          dislike(item); 
+                                          item.userDisliked ? item.dislikes = item.dislikes - 1 :  item.dislikes = item.dislikes + 1;
+                                          item.userDisliked ? item.userDisliked = false :  item.userDisliked = true;
+                                          "
+                                          class="card-link">Dislike: {{item.dislikes}}
+                                        </a>
                                         </section>
                                       </div>
                                     </div>
