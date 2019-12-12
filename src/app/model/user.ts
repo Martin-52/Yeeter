@@ -1,5 +1,7 @@
 export class User {
     username: string;
-    password: string;
-    email: string;
+    userId: string;
+    likesAmount: number;
+    dislikesAmount: number;
+    followersAmount: number;
 }

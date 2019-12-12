@@ -89,9 +89,9 @@
                         </div>
                         
                         <div class="yeeting">
-                            <input type="text" class="form-control" placeholder="What's happening?">
+                            <input type="text" [(ngModel)]="yeetText" class="form-control" placeholder="What's happening?">
                             <span class="yeet-span">
-                                <button class="btn-yeet">YEET</button>
+                                <button (click)="post()" class="btn-yeet">YEET</button>
                             </span>
                             
                         </div>
@@ -148,28 +148,28 @@
                 <div class="col-sm-3">
                     <div class="panel">
                         
-                            <div class="alert alert-primary" role="alert">
-                                    <h2 class="circle" *ngIf="authenticationService.userLoggedIn"> {{authenticationService.userData.displayName}}</h2>
+                            <div *ngIf="authenticationService.userLoggedIn" class="alert alert-primary" role="alert">
+                                    <h2 class="circle" > {{authenticationService.userData.displayName}}</h2>
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <h6>
                                             <small>FOLLOWERS</small>
                                             <br>
-                                            <a href="#">1,545</a>
+                                            <a href="#">{{user.followersAmount}}</a>
                                         </h6>
                                     </div>
                                     <div class="col-xs-4">
                                         <h6>
                                             <small>LIKES</small>
                                             <br>
-                                            <a href="#">251</a>
+                                            <a href="#">{{user.likesAmount}}</a>
                                         </h6>
                                     </div>
                                     <div class="col-xs-5">
                                         <h6>
                                             <small>DISLIKES</small>
                                             <br>
-                                            <a href="#">153</a>
+                                            <a href="#">{{user.dislikesAmount}}</a>
                                         </h6>
                                     </div>
                                 </div>

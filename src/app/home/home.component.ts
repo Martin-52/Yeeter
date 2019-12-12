@@ -6,6 +6,7 @@ import { Yeet } from '../model/yeet';
 import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,8 @@ export class HomeComponent implements OnInit {
   username: string;
   userId: string;
   yeets: Yeet[];
+  user: User;
+  yeetText: string;
 
   ngOnInit() {
     if ((localStorage.getItem('username') !== null) && (localStorage.getItem('uid') !== null)) {
@@ -29,6 +32,11 @@ export class HomeComponent implements OnInit {
       this.yeetService.followingPosts(this.userId).subscribe((res)=>{
         this.yeets = res;
         console.log(this.yeets);
+      });
+
+      this.yeetService.userInfo(this.userId, this.username).subscribe((res)=> {
+        this.user = res;
+        console.log(this.user);
       });
     }
     
@@ -55,5 +63,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
+  post() {
+    console.log("Did this run");
+    this.yeetService.postYeet(this.yeetText, this.userId, this.username);
+    this.yeetText = "";
+  }
 }
