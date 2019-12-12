@@ -39,8 +39,7 @@ export class AuthenticationService {
       
     if (this.UsernameExists(username)) {
       this.userLoggedIn = false;
-      // Throw a username exists error.
-      // Or something similar \(><)/
+      console.log('Something is wrong:');
     } else {
       /*
         This is where the magic happens.
