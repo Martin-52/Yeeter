@@ -38,6 +38,7 @@ export class AuthenticationService {
   SignUp(email: string, password: string, username: string ) {
       
     if (this.UsernameExists(username)) {
+      this.userLoggedIn = false;
       // Throw a username exists error.
       // Or something similar \(><)/
     } else {
@@ -53,6 +54,8 @@ export class AuthenticationService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
+        this.userLoggedIn = true;
+        this.SignIn(email, password);
         console.log('Successfully signed up!', res);
 
       /*
@@ -62,6 +65,7 @@ export class AuthenticationService {
         this.UploadUsername(username, this.angularFireAuth.auth.currentUser.uid);
       })
       .catch(error => {
+        this.userLoggedIn = true;
         console.log('Something is wrong:', error.message);
       });        
     }
