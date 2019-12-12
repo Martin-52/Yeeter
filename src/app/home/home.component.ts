@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../login/authentication.service';
+import { UserService } from '../service/user.service';
+import { YeetService } from '../service/yeet.service';
+import { Yeet } from '../model/yeet';
+import { Observable } from 'rxjs';
 
 import { Router } from '@angular/router';
 
@@ -9,9 +13,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(public authenticationService: AuthenticationService, private router: Router) {}
+  constructor(public authenticationService: AuthenticationService, private router: Router, private userService: UserService,
+    private yeetService: YeetService) {}
+  userLoggedIn: boolean;
+  username: string;
+  userId: string;
+  yeets: Yeet[];
 
   ngOnInit() {
+    if ((localStorage.getItem('username') !== null) && (localStorage.getItem('uid') !== null)) {
+      this.userLoggedIn = true;
+      this.username = JSON.parse(localStorage.getItem('username'));
+      this.userId = JSON.parse(localStorage.getItem('uid'));
+
+      this.yeetService.followingPosts(this.userId).subscribe((res)=>{
+        this.yeets = res;
+        console.log(this.yeets);
+      });
+    }
+    
   }
 
   signOut() {
