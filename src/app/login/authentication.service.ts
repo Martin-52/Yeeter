@@ -2,6 +2,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from "../login/user";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthenticationService {
   userData: any;
   userName: string;
 
-  constructor(private angularFireAuth: AngularFireAuth) {
+  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
     this.angularFireAuth.authState.subscribe(user => {
       if (user) {
         this.userLoggedIn = true;
@@ -25,6 +26,7 @@ export class AuthenticationService {
         // To send to the backend when performing actions.... Maybe
 
         console.log("Signed in as: ", JSON.parse(localStorage.getItem('username')));
+
       } else {
         this.userLoggedIn = false;
         localStorage.setItem('user', null);
@@ -71,7 +73,8 @@ export class AuthenticationService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
-        
+        this.userLoggedIn = true;
+        this.router.navigate(['/home']);
         console.log('Successfully signed in!');
       })
       .catch(err => {
@@ -85,7 +88,8 @@ export class AuthenticationService {
       .auth
       .signOut();
       localStorage.clear();
-  } 
+      this.userLoggedIn = false;
+  }
   
   UsernameExists(username: string) {
     // Dummy method that makes a backend call to determine whether
