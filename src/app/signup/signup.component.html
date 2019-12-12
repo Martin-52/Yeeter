@@ -1,5 +1,3 @@
-
-
 <body>
     <div class="container">
         <div id="background"> 
@@ -7,28 +5,22 @@
                     <div id="lab1">
                         <span>Follow your interests.</span>
                     </div>
-                    
                     <div id="lab1">
                             <span>Hear what people are talking about.</span>
                         </div>
-            
                     <div id="lab1">
                         <span>Join the conversation.</span>
                     </div>
                 </div>
             </div>
-    
         <div *ngIf="!(authenticationService.userLoggedIn )" id="background2">
             <h3> Sign up</h3>
-            
                 <div class="form-group">
                     <input type="text" [(ngModel)]="username"  class="form-control" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="Username">
                 </div>
-    
                 <div class="form-group">
                     <input type="text" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                 </div>
-    
                 <div class="form-group">
                     <input type="password" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
