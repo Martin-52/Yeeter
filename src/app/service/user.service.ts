@@ -16,24 +16,27 @@ export class UserService {
   }
 
   uploadUser(username: string, userId: string) {
-    this.http.post(this.apiUrl + "/user/uploadUser", {
-      username: username,
-      uid: userId
-    });
+    let data = "username="+username+"&uid="+userId;
+    this.http.post(this.apiUrl + "/user/uploadUser", data, {headers: {
+      'content':"application/json",
+      'content-type':"application/x-www-form-urlencoded"
+    }});
   }
 
   followUser(username: string, userId: string) {
-    this.http.post(this.apiUrl + "/user/followUser", {
-      username: username,
-      uid: userId
-    });
+    let data = "username="+username+"&uid="+userId;
+    this.http.post(this.apiUrl + "/user/followUser",data ,{headers: {
+      'content':"application/json",
+      'content-type':"application/x-www-form-urlencoded"
+    }});
   }
 
   unfollowUser(username: string, userId: string) {
-    this.http.post(this.apiUrl + "/user/unfollowUser", {
-      username: username,
-      uid: userId
-    });
+    let data = "username="+username+"&uid="+userId;
+    this.http.post(this.apiUrl + "/user/unfollowUser",data ,{headers: {
+      'content':"application/json",
+      'content-type':"application/x-www-form-urlencoded"
+    }});
   }
 
   isFollowingUser(username: string, userId: string) {
