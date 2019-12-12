@@ -17,7 +17,7 @@ export class UserService {
 
   uploadUser(username: string, userId: string) {
     let data = "username="+username+"&uid="+userId;
-    this.http.post(this.apiUrl + "/user/uploadUser", data, {headers: {
+    return this.http.post(this.apiUrl + "/user/uploadUser", data, {headers: {
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
     }});

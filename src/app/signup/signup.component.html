@@ -1,61 +1,32 @@
-
-
 <body>
-      
     <div class="container">
-
         <div id="background"> 
-                <!-- <div class="social-media">
-                    <img src="../../assets/img/facebook.svg">
-                    <img src="../../assets/img/instagram.svg">
-                    <img src="../../assets/img/twitter.svg">
-                </div> -->
-                
                 <div id="labels">
                     <div id="lab1">
                         <span>Follow your interests.</span>
                     </div>
-                    
                     <div id="lab1">
                             <span>Hear what people are talking about.</span>
                         </div>
-            
                     <div id="lab1">
                         <span>Join the conversation.</span>
                     </div>
-            
                 </div>
-            
             </div>
-    
         <div *ngIf="!(authenticationService.userLoggedIn )" id="background2">
             <h3> Sign up</h3>
-            <form class="sign-up-card">
                 <div class="form-group">
-                    <!-- <label for="exampleInputUsername">Username</label> -->
                     <input type="text" [(ngModel)]="username"  class="form-control" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="Username">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
-    
                 <div class="form-group">
-                    <!-- <label for="exampleInputEmail1">Email address</label> -->
-                    <input type="email" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                    <input type="text" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                 </div>
-    
                 <div class="form-group">
-                    <!-- <label for="exampleInputPassword1">Password</label> -->
                     <input type="password" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
-                <!-- <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> -->
-                <button type="submit" (click)="signUp()" routerLink="/login" class="btn btn-primary">Sign Up</button>
+                <button type="submit" (click)="signUp()" class="btn btn-primary">Sign Up</button>
                 <a href="#" routerLink="/login">I'm already member</a>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
-
-   
 </body>
