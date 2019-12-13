@@ -39,4 +39,21 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  like(item: Yeet) {
+    if (item.userLiked) {
+      this.yeetService.removeLike(item.key, this.userId, item.userId);
+    } else {
+      this.yeetService.addLike(item.key, this.userId, item.userId);
+    }
+  }
+
+  dislike(item: Yeet) {
+    if (item.userDisliked) {
+      this.yeetService.removeDislike(item.key, this.userId, item.userId);
+    } else {
+      this.yeetService.addDislike(item.key, this.userId, item.userId);
+    }
+  }
+
+
 }
