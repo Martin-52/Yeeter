@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   yeets: Yeet[];
   user: User;
   yeetText: string;
+  userToFollow: string;
 
   ngOnInit() {
     if ((localStorage.getItem('username') !== null) && (localStorage.getItem('uid') !== null)) {
@@ -68,5 +69,9 @@ export class ProfileComponent implements OnInit {
     this.yeetText = "";
   }
 
+  follow() {
+    this.userService.followUser(this.userToFollow, this.userId);
+    this.userToFollow = "";
+  }
 }
 

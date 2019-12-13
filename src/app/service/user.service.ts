@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   apiUrl: String = "https://yeeter-web-backend.herokuapp.com";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   usernameExists(username: string) {
     return this.http.get<boolean>(this.apiUrl + "/user/usernameExists", {params : {
@@ -28,7 +29,9 @@ export class UserService {
     this.http.post(this.apiUrl + "/user/followUser",data ,{headers: {
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
-    }});
+    }}).subscribe((res)=>{
+      this.router.navigate(['/home']);
+    });
   }
 
   unfollowUser(username: string, userId: string) {
@@ -36,7 +39,7 @@ export class UserService {
     this.http.post(this.apiUrl + "/user/unfollowUser",data ,{headers: {
       'content':"application/json",
       'content-type':"application/x-www-form-urlencoded"
-    }});
+    }}).subscribe((res)=>{});
   }
 
   isFollowingUser(username: string, userId: string) {

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   yeets: Yeet[];
   user: User;
   yeetText: string;
+  userToFollow: string;
 
   ngOnInit() {
     if ((localStorage.getItem('username') !== null) && (localStorage.getItem('uid') !== null)) {
@@ -67,5 +68,10 @@ export class HomeComponent implements OnInit {
     console.log("Did this run");
     this.yeetService.postYeet(this.yeetText, this.userId, this.username);
     this.yeetText = "";
+  }
+
+  follow() {
+    this.userService.followUser(this.userToFollow, this.userId);
+    this.userToFollow = "";
   }
 }

@@ -183,10 +183,12 @@
                                         <div class="media-body">
                                             <div class="form-group has-feedback alert alert-primary">
                                                 <!-- <label class="control-label sr-only" for="inputSuccess5">Hidden label</label> -->
-                                                <input type="text" class="form-control" placeholder="Search">
+                                                <input type="text" [(ngModel)]="userToFollow" class="form-control" placeholder="Search">
                                                 <!-- <span class="glyphicon glyphicon-camera form-control-feedback" aria-hidden="true"></span> -->
-                                                <span id="search2" class="sr-only">(success)</span>
-                                                
+                                                <!-- <span id="search2" class="sr-only">(success)</span> -->
+                                                <span class="search-span">
+                                                    <button (click)="follow()" class="btn-search">Follow</button>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
