@@ -5,6 +5,7 @@ import { YeetService } from '../service/yeet.service';
 import { Yeet } from '../model/yeet';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,8 @@ export class ProfileComponent implements OnInit {
   username: string;
   userId: string;
   yeets: Yeet[];
+  user: User;
+  yeetText: string;
 
   ngOnInit() {
     if ((localStorage.getItem('username') !== null) && (localStorage.getItem('uid') !== null)) {
@@ -25,9 +28,14 @@ export class ProfileComponent implements OnInit {
       this.username = JSON.parse(localStorage.getItem('username'));
       this.userId = JSON.parse(localStorage.getItem('uid'));
 
-      this.yeetService.followingPosts(this.userId).subscribe((res)=>{
+      this.yeetService.personalPosts(this.userId).subscribe((res)=>{
         this.yeets = res;
         console.log(this.yeets);
+      });
+
+      this.yeetService.userInfo(this.userId, this.username).subscribe((res)=> {
+        this.user = res;
+        console.log(this.user);
       });
     }
     
@@ -36,6 +44,28 @@ export class ProfileComponent implements OnInit {
   signOut() {
     this.authenticationService.SignOut();
     this.router.navigate(['/login']);
+  }
+
+  like(item: Yeet) {
+    if (item.userLiked) {
+      this.yeetService.removeLike(item.key, this.userId, item.userId);
+    } else {
+      this.yeetService.addLike(item.key, this.userId, item.userId);
+    }
+  }
+
+  dislike(item: Yeet) {
+    if (item.userDisliked) {
+      this.yeetService.removeDislike(item.key, this.userId, item.userId);
+    } else {
+      this.yeetService.addDislike(item.key, this.userId, item.userId);
+    }
+  }
+
+  post() {
+    console.log("Did this run");
+    this.yeetService.postYeet(this.yeetText, this.userId, this.username);
+    this.yeetText = "";
   }
 
 }

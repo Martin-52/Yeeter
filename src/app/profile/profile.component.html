@@ -109,8 +109,21 @@
                                         <h6 class="card-subtitle mb-2 text-muted">@{{item.username}}</h6>
                                         <p class="card-text">{{item.yeet}}</p>
                                         <section style="float:right;">
-                                          <a href="#" class="card-link">Like: {{item.likes}}</a>
-                                          <a href="#" class="card-link">Dislike: {{item.dislikes}}</a>
+                                        <a href="javascript: void(0)" (click)="
+                                          like(item);
+                                          item.userLiked ? item.likes = item.likes - 1 :  item.likes = item.likes + 1;
+                                          item.userLiked ? item.userLiked = false :  item.userLiked = true;
+                                          "
+                                          class="card-link" id={{item.likes}}>Like: {{item.likes}}
+                                        </a>
+                                          
+                                        <a href="javascript: void(0)" (click)="
+                                          dislike(item); 
+                                          item.userDisliked ? item.dislikes = item.dislikes - 1 :  item.dislikes = item.dislikes + 1;
+                                          item.userDisliked ? item.userDisliked = false :  item.userDisliked = true;
+                                          "
+                                          class="card-link">Dislike: {{item.dislikes}}
+                                        </a>
                                         </section>
                                       </div>
                                     </div>
@@ -136,32 +149,32 @@
                 <div class="col-sm-3">
                     <div class="panel">
                         
-                            <div class="alert alert-primary" role="alert">
-                                    <h2 class="circle" *ngIf="authenticationService.userLoggedIn"> {{authenticationService.userData.displayName}}</h2>
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <h6>
-                                            <small>FOLLOWERS</small>
-                                            <br>
-                                            <a href="#">1,545</a>
-                                        </h6>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <h6>
-                                            <small>LIKES</small>
-                                            <br>
-                                            <a href="#">251</a>
-                                        </h6>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <h6>
-                                            <small>DISLIKES</small>
-                                            <br>
-                                            <a href="#">153</a>
-                                        </h6>
-                                    </div>
-                                </div>
+                        <div *ngIf="authenticationService.userLoggedIn" class="alert alert-primary" role="alert">
+                            <h2 class="circle" > {{authenticationService.userData.displayName}}</h2>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h6>
+                                    <small>FOLLOWERS</small>
+                                    <br>
+                                    <a href="#">{{user.followersAmount}}</a>
+                                </h6>
                             </div>
+                            <div class="col-xs-4">
+                                <h6>
+                                    <small>LIKES</small>
+                                    <br>
+                                    <a href="#">{{user.likesAmount}}</a>
+                                </h6>
+                            </div>
+                            <div class="col-xs-5">
+                                <h6>
+                                    <small>DISLIKES</small>
+                                    <br>
+                                    <a href="#">{{user.dislikesAmount}}</a>
+                                </h6>
+                            </div>
+                        </div>
+                        </div>
                             
                             <div class="panel-heading">
                                     <div class="media">
