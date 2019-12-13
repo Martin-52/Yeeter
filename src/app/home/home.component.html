@@ -10,7 +10,7 @@
 <ul class="twitter" role="navigation">
         <!-- <li><i href="#" class="fa " routerLink="/signUp"></i><h5>Home</h5></li> -->
 
-        <a href="#" class="fa" routerLink="/signup"> <h5>Home</h5></a>
+        <a href="#" class="fa" routerLink="/home"> <h5>Home</h5></a>
         <!-- <li><i class="fa "></i>Profile</li> -->
         <h1>YEETER</h1>
         <!-- <li><i class="fa fa-envelope-o"></i>Messages</li> -->
@@ -90,7 +90,7 @@
                         </div>
                         
                         <div class="yeeting">
-                            <input type="text" class="form-control" placeholder="What's happening?">
+                            <input type="text" [(ngModel)]="yeetText" class="form-control" placeholder="What's happening?">
                             <span class="yeet-span">
                                 <button class="btn-yeet">YEET</button>
                             </span>
